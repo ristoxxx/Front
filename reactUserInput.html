@@ -20,13 +20,18 @@
             setNimi({...nimi, [event.target.name]: event.target.value});
         }
 
+        const logita = (event) => {
+            const viesti = ("Hello " + nimi.etuNimi + " "  + nimi.sukuNimi);
+            alert(viesti);
+        }
+
         return (
           <div>
-            <p>Hei {nimi.etuNimi} {nimi.sukuNimi}</p>
             <input type="text" name="etuNimi" value={nimi.etunNimi} onChange={inputChanget} />
             <input type="text" name="sukuNimi" value={nimi.sukuNimi} onChange={inputChanget} />
-            
+            <button onClick={logita}>Send</button>
           </div>
+
         );
       };
 
