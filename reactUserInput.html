@@ -13,20 +13,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 
     <script type="text/babel">
-      function HooksCounter() {
-        const [count, setCount] = React.useState(0);
+      function HeiNimi() {
+        const [nimi, setNimi] = React.useState({etuNimi:'', sukuNimi: ''});
+
+        const inputChanget = (event) => {
+            setNimi({...nimi, [event.target.name]: event.target.value});
+        }
 
         return (
           <div>
-            <p>Counter: {count}</p>
-            <button onClick={() => setCount(count + 1)}>+</button>
-            <button onClick={() => setCount(count - 1)}>-</button>
-            <button onClick={() => setCount(0)}>Reset</button>
+            <p>Hei {nimi.etuNimi} {nimi.sukuNimi}</p>
+            <input type="text" name="etuNimi" value={nimi.etunNimi} onChange={inputChanget} />
+            <input type="text" name="sukuNimi" value={nimi.sukuNimi} onChange={inputChanget} />
+            
           </div>
         );
       };
 
-      ReactDOM.render(<HooksCounter />, document.getElementById("root"));
+      ReactDOM.render(<HeiNimi />, document.getElementById("root"));
     </script>
   </body>
 </html>
