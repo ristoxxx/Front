@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React getting started</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+      function HeiNimi() {
+        const [nimi, setNimi] = React.useState({etuNimi:'', ika: '', viesti: ''});
+
+        //keeps state updatet
+        const inputChanget = (event) => {
+            setNimi({...nimi, [event.target.name]: event.target.value});
+        }
+
+        //when button is pressed gives message dependin on age
+        const tarkista = (event) => {
+            
+            if (nimi.ika >= 18) {
+            const viestix = ("Hello " + nimi.etuNimi);
+            setNimi({...nimi, viesti: viestix});
+            }
+            
+            else {
+                const viestix = ("You are too young ");
+                setNimi({...nimi, viesti: viestix});
+            }
+        }
+        
+        return (
+          <div>
+            <p>{nimi.viesti} </p>
+            <label for="ename">Nimi:</label>
+            <input id="ename" type="text" name="etuNimi" value={nimi.etunNimi} onChange={inputChanget} />
+            <p></p>
+            <label for="sname">Ikä:</label>
+            <input id="sname" type="text" name="ika" value={nimi.ika} onChange={inputChanget} />
+            <p></p>
+            <button onClick={tarkista}>Submit</button>
+          </div>
+        );
+      };
+      ReactDOM.render(<HeiNimi />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
